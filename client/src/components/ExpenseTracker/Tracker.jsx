@@ -1,5 +1,7 @@
 import {
+  Button,
   Card,
+  CardActions,
   CardContent,
   CardHeader,
   Divider,
@@ -9,7 +11,7 @@ import FormData from "../FormData/FormData";
 
 const Tracker = () => {
   return (
-    <Card style={{ background: "#fff", height: "350px" }}>
+    <Card style={{ background: "#fff", height: "400px" }}>
       <CardHeader title="Expense Tracker" />
       <CardContent>
         <Typography variant="subtitle1" align="center">
@@ -24,6 +26,11 @@ const Tracker = () => {
         <Typography> {/* speech conten */} </Typography>
         <FormData />
       </CardContent>
+      <CardActions>
+        <Button variant="outlined" fullWidth>
+          Create
+        </Button>
+      </CardActions>
     </Card>
   );
 };
