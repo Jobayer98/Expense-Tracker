@@ -1,5 +1,11 @@
+import { Paper } from "@mui/material";
+
 const Income = () => {
-  return <div>Income</div>;
+  return (
+    <Paper elevation={2} style={{ background: "#fff", height: "250px" }}>
+      Income
+    </Paper>
+  );
 };
 
 export default Income;
