@@ -1,7 +1,5 @@
 import {
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardHeader,
   Divider,
@@ -15,7 +13,7 @@ const Tracker = () => {
       <CardHeader title="Expense Tracker" />
       <CardContent>
         <Typography variant="subtitle1" align="center">
-          Total Balnce $90
+          Total Balance $90
         </Typography>
         <Typography variant="subtitle2" align="center">
           Try saying: Add income for $100 in Category Salary for Monday
@@ -26,11 +24,6 @@ const Tracker = () => {
         <Typography> {/* speech conten */} </Typography>
         <FormData />
       </CardContent>
-      <CardActions>
-        <Button variant="outlined" fullWidth>
-          Create
-        </Button>
-      </CardActions>
     </Card>
   );
 };

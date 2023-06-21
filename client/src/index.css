@@ -13,4 +13,5 @@ body {
     ),
     url("./assets/money.png");
   background-size: cover;
+  padding: 0 16px;
 }
