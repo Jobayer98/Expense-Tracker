@@ -1,10 +1,30 @@
-import { Paper } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Typography,
+} from "@mui/material";
+import FormData from "../FormData/FormData";
 
 const Tracker = () => {
   return (
-    <Paper elevation={2} style={{ background: "#fff", height: "350px" }}>
-      Tracker
-    </Paper>
+    <Card style={{ background: "#fff", height: "350px" }}>
+      <CardHeader title="Expense Tracker" />
+      <CardContent>
+        <Typography variant="subtitle1" align="center">
+          Total Balnce $90
+        </Typography>
+        <Typography variant="subtitle2" align="center">
+          Try saying: Add income for $100 in Category Salary for Monday
+        </Typography>
+        <Divider />
+      </CardContent>
+      <CardContent>
+        <Typography> {/* speech conten */} </Typography>
+        <FormData />
+      </CardContent>
+    </Card>
   );
 };
 

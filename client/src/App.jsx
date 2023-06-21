@@ -14,13 +14,13 @@ const App = () => {
       alignItems={"center"}
       style={{ minHeight: "100vh" }}
     >
-      <Grid item xs={12} sm={6} md={3}>
+      <Grid item xs={12} sm={4}>
         <Income />
       </Grid>
-      <Grid item xs={12} sm={6} md={3}>
+      <Grid item xs={12} sm={4}>
         <Tracker />
       </Grid>
-      <Grid item xs={12} sm={6} md={3}>
+      <Grid item xs={12} sm={4}>
         <Expense />
       </Grid>
     </Grid>
