@@ -5,10 +5,10 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useForm } from "react-hook-form";
+import { v4 as uuidv4 } from "uuid";
+import { useContext } from "react";
+import ExpenseContext from "../../context/ExpenseContext";
 
 const typeData = [{ title: "Income" }, { title: "Expense" }];
 
@@ -23,9 +23,14 @@ const category = [
 ];
 
 const FormData = () => {
+  const { addExpensOrIncome } = useContext(ExpenseContext);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    const expenseData = {
+      ...data,
+      id: uuidv4(),
+    };
+    addExpensOrIncome(expenseData);
   };
   return (
     <FormControl fullWidth>
@@ -34,7 +39,7 @@ const FormData = () => {
           <Grid item xs={6}>
             <Autocomplete
               clearOnEscape
-              defaultValue={{ title: "Income" }}
+              // defaultValue={{ title: "Income" }}
               options={typeData}
               getOptionLabel={(option) => option.title}
               renderInput={(params) => (
@@ -73,9 +78,14 @@ const FormData = () => {
             />
           </Grid>
           <Grid item xs={6}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker label="Date" {...register("date")} />
-            </LocalizationProvider>
+            <TextField
+              InputLabelProps={{
+                shrink: true,
+              }}
+              type="date"
+              label="Date"
+              {...register("date")}
+            />
           </Grid>
         </Grid>
         <Button type="submit" sx={{ my: "16px" }} variant="outlined" fullWidth>
