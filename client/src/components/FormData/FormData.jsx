@@ -18,6 +18,7 @@ const category = [
   { title: "Travel" },
   { title: "Food" },
   { title: "Shopping" },
+  { title: "Salary" },
   { title: "House" },
   { title: "Others" },
 ];
@@ -39,7 +40,6 @@ const FormData = () => {
           <Grid item xs={6}>
             <Autocomplete
               clearOnEscape
-              // defaultValue={{ title: "Income" }}
               options={typeData}
               getOptionLabel={(option) => option.title}
               renderInput={(params) => (
@@ -88,7 +88,7 @@ const FormData = () => {
             />
           </Grid>
         </Grid>
-        <Button type="submit" sx={{ my: "16px" }} variant="outlined" fullWidth>
+        <Button type="submit" sx={{ mt: "16px" }} variant="outlined" fullWidth>
           Create
         </Button>
       </form>
