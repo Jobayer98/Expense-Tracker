@@ -10,42 +10,51 @@ const Expense = () => {
   const { transactions } = useContext(ExpenseContext);
 
   const totalExpense = transactions.reduce((prevValue, transaction) => {
-    if (transaction.type === "Expense") {
+    if (
+      transaction.type === "Expense" &&
+      transaction.category === "Bills" &&
+      transaction.category === "Travel" &&
+      transaction.category === "Food" &&
+      transaction.category === "Shopping" &&
+      transaction.category === "Others"
+    ) {
       return prevValue + transaction.amount;
     }
     return prevValue;
   }, 0);
 
   const bills = transactions.reduce((prevBills, item) => {
-    if (item.category === "Bills") {
+    if (item.type === "Expense" && item.category === "Bills") {
       return prevBills + item.amount;
     }
     return prevBills;
   }, 0);
   const travel = transactions.reduce((prevTravel, item) => {
-    if (item.category === "Travel") {
+    if (item.type === "Expense" && item.category === "Travel") {
       return prevTravel + item.amount;
     }
     return prevTravel;
   }, 0);
   const food = transactions.reduce((prevFood, item) => {
-    if (item.category === "Food") {
+    if (item.type === "Expense" && item.category === "Food") {
       return prevFood + item.amount;
     }
     return prevFood;
   }, 0);
   const shopping = transactions.reduce((prevShopping, item) => {
-    if (item.category === "Shopping") {
+    if (item.type === "Expense" && item.category === "Shopping") {
       return prevShopping + item.amount;
     }
     return prevShopping;
   }, 0);
+
   const others = transactions.reduce((prevOthers, item) => {
-    if (item.category === "Others") {
+    if (item.type === "Expense" && item.category === "Others") {
       return prevOthers + item.amount;
     }
     return prevOthers;
   }, 0);
+
   const data = {
     labels: ["Bills", "Travel", "Food", "Shopping", "Others"],
     datasets: [

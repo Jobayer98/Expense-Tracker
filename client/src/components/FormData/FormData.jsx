@@ -14,7 +14,6 @@ const typeData = [{ title: "Income" }, { title: "Expense" }];
 
 const category = [
   { title: "Bills" },
-  { title: "Car" },
   { title: "Travel" },
   { title: "Food" },
   { title: "Shopping" },
