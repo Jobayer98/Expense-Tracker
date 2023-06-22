@@ -11,14 +11,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import { green, red } from "@mui/material/colors";
 import classes from "./List.module.css";
+import { useContext } from "react";
+import ExpenseContext from "../../context/ExpenseContext";
 
 const AllTransaction = () => {
-  const transactions = [
-    { id: 1, type: "Income", category: "Salary", date: "Wed Dec 23" },
-    { id: 2, type: "Expence", category: "Salary", date: "Wed Dec 23" },
-    { id: 3, type: "Income", category: "Salary", date: "Wed Dec 23" },
-    { id: 4, type: "Income", category: "Salary", date: "Wed Dec 23" },
-  ];
+  const { transactions, removeExpenseOrIncome } = useContext(ExpenseContext);
+
+  const handleRemove = (id) => {
+    removeExpenseOrIncome(id);
+  };
 
   return (
     <List dense={false} className={classes.list}>
@@ -26,7 +27,11 @@ const AllTransaction = () => {
         <Slide key={item.id} in mountOnEnter unmountOnExit>
           <ListItem
             secondaryAction={
-              <IconButton edge="end" aria-label="delete">
+              <IconButton
+                onClick={() => handleRemove(item.id)}
+                edge="end"
+                aria-label="delete"
+              >
                 <DeleteIcon />
               </IconButton>
             }

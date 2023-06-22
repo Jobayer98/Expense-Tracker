@@ -1,26 +1,36 @@
+/* eslint-disable no-case-declarations */
 import { useReducer } from "react";
 import ExpenseContext from "./ExpenseContext";
 
 const initialTransaction = [];
 
 const reducer = (state, action) => {
-  if (action.type === "ADD") {
-    const transactions = [...state, action.payload];
-    console.log(transactions);
-    return transactions;
+  switch (action.type) {
+    case "ADD":
+      const transactions = [action.payload, ...state];
+      return transactions;
+    case "REMOVE":
+      const remainingTransactions = state.filter(
+        (item) => item.id !== action.payload
+      );
+      return remainingTransactions;
+    default:
+      return state;
   }
 };
 
 const ExpenseProvider = ({ children }) => {
-  const [transaction, dispatch] = useReducer(reducer, initialTransaction);
+  const [transactions, dispatch] = useReducer(reducer, initialTransaction);
 
   const addExpensOrIncome = (data) => {
     dispatch({ type: "ADD", payload: data });
   };
-  const removeExpenseOrIncome = () => {};
+  const removeExpenseOrIncome = (id) => {
+    dispatch({ type: "REMOVE", payload: id });
+  };
 
   const expenseInfo = {
-    transaction,
+    transactions,
     addExpensOrIncome,
     removeExpenseOrIncome,
   };

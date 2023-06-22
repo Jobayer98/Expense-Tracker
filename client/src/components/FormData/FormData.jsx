@@ -28,8 +28,11 @@ const FormData = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const expenseData = {
-      ...data,
       id: uuidv4(),
+      type: data.type,
+      category: data.category,
+      amount: parseFloat(data.amount),
+      date: data.date,
     };
     addExpensOrIncome(expenseData);
   };
