@@ -47,7 +47,10 @@ const AllTransaction = () => {
                 <MoneyOffIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={item.type} />
+            <ListItemText
+              primary={item.type}
+              secondary={`$${item.amount} - ${item.date}`}
+            />
           </ListItem>
         </Slide>
       ))}
