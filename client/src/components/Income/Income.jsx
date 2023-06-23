@@ -7,18 +7,7 @@ import ExpenseContext from "../../context/ExpenseContext";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Income = () => {
-  const { transactions } = useContext(ExpenseContext);
-
-  const totalIncome = transactions.reduce((prevValue, transaction) => {
-    if (
-      transaction.type === "Income" &&
-      transaction.category === "Salary" &&
-      transaction.category === "House"
-    ) {
-      return prevValue + transaction.amount;
-    }
-    return prevValue;
-  }, 0);
+  const { transactions, totalIncome } = useContext(ExpenseContext);
 
   const salary = transactions.reduce((preValue, item) => {
     if (item.type === "Income" && item.category === "Salary") {
@@ -39,11 +28,7 @@ const Income = () => {
     datasets: [
       {
         data: [salary, house],
-        backgroundColor: [
-          "rgba(255, 10, 10, 0.3)",
-          "rgba(0, 250, 0, 0.2)",
-          "rgba(20, 10, 255, 0.3)",
-        ],
+        backgroundColor: ["#37b24d", "#69db7c"],
       },
     ],
   };

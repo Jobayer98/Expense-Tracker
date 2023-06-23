@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 import { Grid, Paper, Typography } from "@mui/material";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { useContext } from "react";
@@ -7,21 +8,7 @@ import ExpenseContext from "../../context/ExpenseContext";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Expense = () => {
-  const { transactions } = useContext(ExpenseContext);
-
-  const totalExpense = transactions.reduce((prevValue, transaction) => {
-    if (
-      transaction.type === "Expense" &&
-      transaction.category === "Bills" &&
-      transaction.category === "Travel" &&
-      transaction.category === "Food" &&
-      transaction.category === "Shopping" &&
-      transaction.category === "Others"
-    ) {
-      return prevValue + transaction.amount;
-    }
-    return prevValue;
-  }, 0);
+  const { transactions, totalExpense } = useContext(ExpenseContext);
 
   const bills = transactions.reduce((prevBills, item) => {
     if (item.type === "Expense" && item.category === "Bills") {
@@ -61,11 +48,11 @@ const Expense = () => {
       {
         data: [bills, travel, food, shopping, others],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
+          "#ff8787",
+          "#c92a2a",
+          "#e64980",
+          "#a61e4d",
+          "#e64980",
         ],
       },
     ],

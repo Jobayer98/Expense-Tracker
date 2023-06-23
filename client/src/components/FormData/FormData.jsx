@@ -25,6 +25,7 @@ const category = [
 const FormData = () => {
   const { addExpensOrIncome } = useContext(ExpenseContext);
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
@@ -38,6 +39,7 @@ const FormData = () => {
       date: data.date,
     };
     addExpensOrIncome(expenseData);
+    reset();
   };
   return (
     <FormControl fullWidth>
